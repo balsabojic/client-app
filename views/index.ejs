@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="/javascripts/sessionVariables.js"></script>
+  </head>
+  <body>
+    <script>
+
+      $( document ).ready(function() {
+        var sim = getSessionSimulation();
+        if (sim != undefined && sim != null && sim != 'null') {
+          $('#start' + sim).html('Running');
+          $('#start' + sim).attr("class", 'btn btn-success');
+          $('#stop' + sim).prop('disabled', false);
+          for (var i = 1; i < 4; i++) {
+            if (i != sim) {
+              $('#start' + i).prop('disabled', true);
+              $('#stop' + i).prop('disabled', true);
+            }
+          }
+        }
+        else {
+          for (var i = 1; i < 4; i++) {
+            if (i != sim) {
+              $('#start' + i).prop('disabled', false);
+              $('#stop' + i).prop('disabled', true);
+            }
+          }
+        }
+      });
+
+      $.get('http://localhost:3000/data', function(data) {
+        console.log(data);
+      });
+
+      function startSimulation(name) {
+        var sim = getSessionSimulation();
+        if (sim == undefined || sim == null || sim == 'null') {
+          $.post('http://localhost:3000/simulation', {sim_name: name});
+          var num = 0;
+          switch (name) {
+            case 'simA':
+              num = 1;
+              break;
+            case 'simB':
+              num = 2;
+              break;
+            case 'simC':
+              num = 3;
+              break;
+          }
+          setSessionSimulation(num);
+          simulationStarted(num);
+        }
+      }
+
+      function simulationStarted(num) {
+        var sim = getSessionSimulation();
+        if (sim == undefined || sim == null || sim == 'null') {
+          $('#start' + num).html('Running');
+          $('#start' + sim).attr("class", 'btn btn-success');
+          $('#stop' + num).prop('disabled', false);
+          for (var i = 1; i < 4; i++) {
+            if (i != num) {
+              $('#start' + i).prop('disabled', true);
+              $('#stop' + i).prop('disabled', true);
+            }
+          }
+        }
+      }
+
+      function simulationStopped() {
+        var sim = getSessionSimulation();
+        if (sim != undefined && sim != null && sim != 'null') {
+          $('#start' + sim).attr("class", 'btn btn-primary');
+          $('#start' + sim).html("");
+          $('#start' + sim).append('<span class="glyphicon glyphicon-play" aria-hidden="true"></span>');
+          $('#start' + sim).append('<span>Start</span>');
+          for (var i = 1; i < 4; i++) {
+            $('#start' + i).prop('disabled', false);
+            $('#stop' + i).prop('disabled', true);
+          }
+          setSessionSimulation(null);
+        }
+      }
+
+      function stopSimulation() {
+        // Send request to the server
+        $.post('http://localhost:3000/stop');
+        simulationStopped();
+      }
+    </script>
+
+    <div class="container">
+      <div class="row-fluid">
+        <div class="col-sm-12 ac">
+          <h1>Choose one of the simulations:</h1>
+          <br />
+        </div>
+
+        <div class="col-sm-12">
+          <div class="col-sm-4">
+            <div class="home-div">
+              <a onclick="startSimulation('simA')" href="http://localhost:3000/village/charts"><div class="home-picture"></div></a>
+              <h3>Simulation A:</h3>
+                <ul>
+                  <li>VPP: 30%</li>
+                  <li>Profile: A</li>
+                </ul>
+            </div>
+            <br />
+            <div class="col-sm4 ac">
+              <a onclick="startSimulation('simA')" href="http://localhost:3000/village/charts">
+                <button id="start1" type="button" class="btn btn-primary">
+                  <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                  Start
+                </button>
+              </a>
+              <button onclick="stopSimulation()" id="stop1" type="button" class="btn btn-danger">
+                <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+                Stop
+              </button>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="home-div">
+              <a onclick="startSimulation('simB')" href="http://localhost:3000/village/charts"><div class="home-picture"></div></a>
+              <h3>Simulation B:</h3>
+              <ul>
+                <li>VPP: 50%</li>
+                <li>Profile: A</li>
+              </ul>
+            </div>
+            <br />
+            <div class="col-sm4 ac">
+              <a onclick="startSimulation('simB')" href="http://localhost:3000/village/charts">
+                <button id="start2" type="button" class="btn btn-primary">
+                  <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                  Start
+                </button>
+              </a>
+              <button onclick="stopSimulation()" id="stop2" type="button" class="btn btn-danger">
+                <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+                Stop
+              </button>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="home-div">
+              <a onclick="startSimulation('simC')" href="http://localhost:3000/village/charts"><div class="home-picture"></div></a>
+              <h3>Simulation C:</h3>
+              <ul>
+                <li>VPP: default</li>
+                <li>Profile: default</li>
+              </ul>
+            </div>
+            <br />
+            <div class="col-sm4 ac">
+              <a onclick="startSimulation('simC')" href="http://localhost:3000/village/charts">
+                <button id="start3" type="button" class="btn btn-primary">
+                  <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                  Start
+                </button>
+              </a>
+              <button onclick="stopSimulation()" id="stop3" type="button" class="btn btn-danger">
+                <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+                Stop
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
