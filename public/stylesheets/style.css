@@ -33,3 +33,43 @@ a {
   opacity: 0.4;
   filter: alpha(opacity=40);
 }
+
+.solarpanel-picture {
+  background: url("/../images/solarpanel.png") no-repeat;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  height:100px;
+  width:100px;
+}
+
+.windturbine-picture {
+  background: url("/../images/windturbine.png") no-repeat;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  height:100px;
+  width:100px;
+}
+
+.biomass-picture {
+  background: url("/../images/biomass.png") no-repeat;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  height:100px;
+  width:100px;
+}
+
+.smgnode-picture {
+  background: url("/../images/smgnode.png") no-repeat;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  height:100px;
+  width:100px;
+}
