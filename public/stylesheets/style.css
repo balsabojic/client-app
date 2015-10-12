@@ -47,3 +47,12 @@ a {
   width: 20%;
   height: 18%;
 }
+
+.vpp-div {
+  border: black solid 1px;
+  padding: 5%;
+  margin: 0%;
+  background-color: rgba(255,255,255, 0.9);
+  border-radius: 10px;
+  color: black;
+}
