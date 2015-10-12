@@ -7,4 +7,22 @@ router.get('/', function(req, res) {
     res.json(data);
 });
 
+router.get('/vpp', function(req, res) {
+    // Add vpp data
+    var data = client.getVppData();
+    res.json(data);
+});
+
+router.get('/village', function(req, res) {
+    // Add village data
+    var data = client.getVillageData();
+    res.json(data);
+});
+
+router.get('/simulation', function(req, res) {
+    // Add simulation data
+    var data = client.getSimulationData();
+    res.json(data);
+});
+
 module.exports = router;

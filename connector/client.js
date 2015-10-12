@@ -4,7 +4,11 @@ var net = require('net');
 var sendData = [];
 var connected = false;
 
-var client = net.connect(4321,/*'127.0.0.1'*/'192.168.21.233',
+var vppData = null;
+var villageData = null;
+var simulationData = {};
+
+var client = net.connect(4321,'127.0.0.1'/*'192.168.21.233'*/,
     function() { //'connect' listener
         connected = true;
         console.log('connected to server!');
@@ -13,6 +17,18 @@ var client = net.connect(4321,/*'127.0.0.1'*/'192.168.21.233',
 client.on('data', function(data) {
     var obj = JSON.parse(data);
     sendData.push(obj);
+
+    // Vpp and Village data
+    vppData = obj.vpp;
+    villageData = obj.village;
+
+    // Simulation data
+    simulationData['name'] = obj.simulationName;
+    simulationData['start'] = obj.startDate;
+    simulationData['end'] = obj.endDate;
+    simulationData['interval'] = obj.timeInterval;
+    simulationData['progress'] = obj.progress;
+
     console.log(sendData);
     // Cannot write after end
     //client.end();
@@ -55,4 +71,16 @@ exports.stopSimulation = function() {
     sendData = [];
     var stop = 'stop' + '\r\n';
     client.write(stop);
+}
+
+exports.getVppData = function() {
+    return vppData;
+}
+
+exports.getVillageData = function() {
+    return villageData;
+}
+
+exports.getSimulationData = function() {
+    return simulationData;
 }
