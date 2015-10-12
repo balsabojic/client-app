@@ -12,64 +12,38 @@ a {
 }
 
 .home-div {
-  border: #d58512 solid 1px;
-  padding: 10%;
+  border: black solid 1px;
+  padding: 5%;
   margin: 1%;
+  background-color: rgba(255,255,255, 0.9);
+  border-radius: 10px;
+  color: black;
 }
 
 .home-picture {
-  background: url("/../images/green-energy.jpg") no-repeat;
+  background: url("/../images/fortiss1.jpg") no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  border-radius: 80px;
   width: 100%;
   height: 120px;
 }
 
-.home-picture:hover {
-  background-color: rgba(0, 0, 0, 0.4);
-  opacity: 0.4;
-  filter: alpha(opacity=40);
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0.8;
+  filter: alpha(opacity=80); /* For IE8 and earlier */
+  width: 100%;
+  height: 100%;
 }
 
-.solarpanel-picture {
-  background: url("/../images/solarpanel.png") no-repeat;
-  background-size: cover;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  height:100px;
-  width:100px;
-}
-
-.windturbine-picture {
-  background: url("/../images/windturbine.png") no-repeat;
-  background-size: cover;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  height:100px;
-  width:100px;
-}
-
-.biomass-picture {
-  background: url("/../images/biomass.png") no-repeat;
-  background-size: cover;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  height:100px;
-  width:100px;
-}
-
-.smgnode-picture {
-  background: url("/../images/smgnode.png") no-repeat;
-  background-size: cover;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  height:100px;
-  width:100px;
+.ad {
+  position: fixed;
+  top: 80%;
+  left: 0%;
+  width: 20%;
+  height: 18%;
 }

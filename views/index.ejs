@@ -97,81 +97,83 @@
       }
     </script>
 
+    <img src="images/smart-city.jpg" class="bg" alt="">
+
     <div class="container">
       <div class="row-fluid">
         <div class="col-sm-12 ac">
-          <h1>Choose one of the simulations:</h1>
+          <h1 style="color: black;">Choose one of the simulations:</h1>
           <br />
         </div>
 
         <div class="col-sm-12">
           <div class="col-sm-4">
             <div class="home-div">
-              <a onclick="startSimulation('simA')" href="http://localhost:3000/village/charts"><div class="home-picture"></div></a>
-              <h3>Simulation A:</h3>
+              <div class="home-picture"></div>
+                <h3>Simulation A:</h3>
                 <ul>
                   <li>VPP: 30%</li>
                   <li>Profile: A</li>
                 </ul>
-            </div>
-            <br />
-            <div class="col-sm4 ac">
-              <a onclick="startSimulation('simA')" href="http://localhost:3000/village/charts">
-                <button id="start1" type="button" class="btn btn-primary">
-                  <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
-                  Start
+                <br />
+                <div class="col-sm4 ac">
+                <a onclick="startSimulation('simA')" href="http://localhost:3000/village/charts">
+                  <button id="start1" type="button" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                    Start
+                  </button>
+                </a>
+                <button onclick="stopSimulation()" id="stop1" type="button" class="btn btn-danger">
+                  <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+                  Stop
                 </button>
-              </a>
-              <button onclick="stopSimulation()" id="stop1" type="button" class="btn btn-danger">
-                <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
-                Stop
-              </button>
+                </div>
             </div>
           </div>
           <div class="col-sm-4">
             <div class="home-div">
-              <a onclick="startSimulation('simB')" href="http://localhost:3000/village/charts"><div class="home-picture"></div></a>
+              <div class="home-picture"></div>
               <h3>Simulation B:</h3>
               <ul>
                 <li>VPP: 50%</li>
                 <li>Profile: A</li>
               </ul>
-            </div>
-            <br />
-            <div class="col-sm4 ac">
-              <a onclick="startSimulation('simB')" href="http://localhost:3000/village/charts">
-                <button id="start2" type="button" class="btn btn-primary">
-                  <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
-                  Start
+              <br />
+              <div class="col-sm4 ac">
+                <a onclick="startSimulation('simB')" href="http://localhost:3000/village/charts">
+                  <button id="start2" type="button" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                    Start
+                  </button>
+                </a>
+                <button onclick="stopSimulation()" id="stop2" type="button" class="btn btn-danger">
+                  <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+                  Stop
                 </button>
-              </a>
-              <button onclick="stopSimulation()" id="stop2" type="button" class="btn btn-danger">
-                <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
-                Stop
-              </button>
+              </div>
             </div>
           </div>
           <div class="col-sm-4">
             <div class="home-div">
-              <a onclick="startSimulation('simC')" href="http://localhost:3000/village/charts"><div class="home-picture"></div></a>
+              <div class="home-picture"></div>
               <h3>Simulation C:</h3>
               <ul>
                 <li>VPP: default</li>
                 <li>Profile: default</li>
               </ul>
-            </div>
-            <br />
-            <div class="col-sm4 ac">
-              <a onclick="startSimulation('simC')" href="http://localhost:3000/village/charts">
-                <button id="start3" type="button" class="btn btn-primary">
-                  <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
-                  Start
+              <br />
+              <div class="col-sm4 ac">
+                <a onclick="startSimulation('simC')" href="http://localhost:3000/village/charts">
+                  <button id="start3" type="button" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                    Start
+                  </button>
+                </a>
+                <button onclick="stopSimulation()" id="stop3" type="button" class="btn btn-danger">
+                  <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+                  Stop
                 </button>
-              </a>
-              <button onclick="stopSimulation()" id="stop3" type="button" class="btn btn-danger">
-                <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
-                Stop
-              </button>
+              </div>
             </div>
           </div>
         </div>
