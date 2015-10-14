@@ -101,22 +101,26 @@
 
     <div class="container">
       <div class="row-fluid">
-        <div class="col-sm-12 ac">
-          <h1 style="color: black;">Choose one of the simulations:</h1>
-          <br />
-        </div>
 
         <div class="col-sm-12">
           <div class="col-sm-4">
             <div class="home-div">
               <div class="home-picture"></div>
-                <h3>Simulation A:</h3>
-                <ul>
-                  <li>VPP: 30%</li>
-                  <li>Profile: A</li>
-                </ul>
-                <br />
-                <div class="col-sm4 ac">
+              <h3>Simulation A:</h3>
+              <b>Virtual Power Plant: </b> <br/>
+              <div style="padding-left: 5%;">
+                Solar Energy: <b>10 KW </b> <br />
+                Wind Energy: <b>1 MW </b> <br />
+                Biogas Energy: <b>0 W </b> <br />
+              </div>
+              <b>Village: </b> <br />
+              <div style="padding-left: 5%;">
+                Family houses: <b>10 KW </b> <br />
+                Street Lights: <b>200 KW </b> <br />
+                Commercial: <b>100 KW </b>
+              </div>
+              <br />
+              <div class="col-sm4 ac">
                 <a onclick="startSimulation('simA')" href="http://localhost:3000/village/charts">
                   <button id="start1" type="button" class="btn btn-primary">
                     <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
@@ -127,7 +131,7 @@
                   <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
                   Stop
                 </button>
-                </div>
+              </div>
             </div>
           </div>
           <div class="col-sm-4">
