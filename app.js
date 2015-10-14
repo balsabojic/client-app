@@ -16,6 +16,8 @@ var client = require('./connector/client');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
+app.set('village', path.join(__dirname, 'views/village'));
+app.set('vpp', path.join(__dirname, 'views/vpp'));
 app.set('view engine', 'ejs');
 
 app.use(favicon());

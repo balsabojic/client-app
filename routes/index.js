@@ -15,7 +15,6 @@ router.post('/simulation', function(req, res) {
     client.createClient();
   }
   client.sendData(name);
-  //res.redirect('line-chart');
 });
 
 router.get('/close', function(req, res) {
@@ -26,10 +25,6 @@ router.get('/close', function(req, res) {
 router.post('/stop', function(req, res) {
   client.stopSimulation();
   console.log("connection is stopped -> state machine");
-});
-
-router.get('/example', function(req, res) {
-  res.render('example');
 });
 
 module.exports = router;

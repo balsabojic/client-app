@@ -8,7 +8,7 @@ var vppData = null;
 var villageData = null;
 var simulationData = {};
 
-var client = net.connect(4321,'127.0.0.1'/*'192.168.21.233'*/,
+var client = net.connect(4321,/*'127.0.0.1'*/'192.168.21.233',
     function() { //'connect' listener
         connected = true;
         console.log('connected to server!');
