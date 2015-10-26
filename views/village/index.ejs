@@ -1,0 +1,126 @@
+<html>
+<head>
+    <link href="/stylesheets/c3.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
+    <script src="/javascripts/d3.min.js" charset="utf-8"></script>
+    <script src="/javascripts/c3.min.js"></script>
+</head>
+<body>
+
+<script>
+    $( document ).ready(function() {
+
+        window.setInterval(function(){
+            updateInfo();
+        }, 1000);
+
+        function updateInfo() {
+            $.get('http://localhost:3000/data/simulation', function (data) {
+                $('#sim-name').html(data.name);
+                var startDate = data.start.date.day + '.' + data.start.date.month + '.' + data.start.date.year
+                        + ' ' + data.start.time.hour + ':' + data.start.time.minute;
+                $('#sim-start').html(startDate);
+                var endDate = data.end.date.day + '.' + data.end.date.month + '.' + data.end.date.year
+                        + ' ' + data.end.time.hour + ':' + data.end.time.minute;
+                $('#sim-end').html(endDate);
+                $('#sim-interval').html(data.interval.seconds + ' seconds');
+                $('#sim-progress').html(data.progress + '%');
+                $('#sim-progress').css('width', data.progress + '%').attr('aria-valuenow', data.progress);
+            });
+        }
+    });
+</script>
+
+<div class="row-fluid">
+    <div class="col-sm-12">
+        <div class="col-sm-2">
+            <a href="http://localhost:3000/">
+                <button type="button" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    Back
+                </button>
+            </a>
+        </div>
+        <div class="col-sm-10">
+            <div class="col-sm-12">
+                <div class="col-sm-6">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <b>Name: </b>
+                            <div id="sim-name" class="label label-success"></div>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Start time: </b>
+                            <div id="sim-start" class="label label-success"></div>
+                        </li>
+                        <li class="list-group-item">
+                            <b>End time: </b>
+                            <div id="sim-end" class="label label-success"></div>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Interval:</b>
+                            <div id="sim-interval" class="label label-success"></div>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Progress: </b> <br /> <br />
+                            <div class="progress">
+                                <div id="sim-progress" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                                    0%
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Virtual power plant</div>
+                        <div class="panel-body">
+                            Panel content
+                        </div>
+                    </div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Village</div>
+                        <div class="panel-body">
+                            Panel content
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="col-sm-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Track results</div>
+                        <div class="panel-body ac">
+                            <a href="http://localhost:3000/village/charts">
+                                <button type="button" class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+                                    View charts
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Smart Micro Grid</div>
+                        <div class="panel-body ac">
+                            <a href="http://localhost:3000/village/charts">
+                                <button type="button" class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+                                    View SMG data
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>
