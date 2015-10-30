@@ -19,11 +19,6 @@
                     Back
                 </button>
             </a>
-            <br /> <br />
-            <button id="stop" onclick="stopSimulation();" type="button" class="btn btn-danger">
-                <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
-                Stop
-            </button>
         </div>
         <div class="col-sm-10 ac">
             <ul class="nav nav-tabs nav-justified">
@@ -66,10 +61,24 @@
         bindto: '#chart',
         data: {
             columns: [
-                ['data1', []],
-                ['data2', []]
+                ['Family Houses (H0)', []],
+                ['Commercial Area', []],
+                ['Agricultural Farm', []],
+                ['Street Light', []]
             ],
             type: 'area-step'
+        },
+        axis: {
+            y:{
+                show: true,
+                label: 'Power in kW'
+            },
+            x:{
+                label: {
+                    text: 'Village consumption',
+                    position: 'outer-center',
+                }
+            }
         },
         grid: {
             x: {
@@ -87,22 +96,6 @@
     window.setInterval(function(){
         drawChart();
     }, 3000);
-
-    $( document ).ready(function() {
-        var sim = getSessionSimulation();
-        if (sim != undefined && sim != null && sim != 'null') {
-            $('#stop').prop('disabled', false);
-        }
-        else {
-            $('#stop').prop('disabled', true);
-        }
-    });
-
-    function stopSimulation() {
-        $.post('http://localhost:3000/stop');
-        $('#stop').prop('disabled', true);
-        setSessionSimulation(null);
-    }
 
     function changeToAreaChart() {
         chart.transform('area-step');
@@ -122,18 +115,24 @@
 
     function drawChart() {
         $.get("http://localhost:3000/data", function(reqData) {
-            var array1 = ['data1'];
-            var array2 = ['data2'];
+            var array1 = ['Family Houses (H0)'];
+            var array2 = ['Commercial Area'];
+            var array3 = ['Agricultural Farm'];
+            var array4 = ['Street Light'];
             var obj = JSON.parse(reqData);
             for (var i in obj) {
-                array1.push(parseInt(obj[i].consumption));
-                array2.push(parseInt(obj[i].production));
+                array1.push(parseInt(obj[i].village.village.house));
+                array2.push(parseInt(obj[i].village.village.commercial));
+                array3.push(parseInt(obj[i].village.village.farm));
+                array4.push(parseInt(obj[i].village.streetLight));
                 var time = obj[i].time.time.hour + ':' + obj[i].time.time.minute;
             }
             chart.load({
                 columns: [
                     array1,
-                    array2
+                    array2,
+                    array3,
+                    array4
                 ]
             });
         });
