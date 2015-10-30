@@ -25,13 +25,13 @@
                 <li>
                     <button onclick="changeToPieChart();" type="button" class="btn btn-primary">
                         <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
-                        Pie chart
+                        Energy Usage
                     </button>
                 </li>
                 <li>
                     <button onclick="changeToBarChart();" type="button" class="btn btn-primary">
                         <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
-                        Bar chart
+                        Production / Usage
                     </button>
                 </li>
             </ul>
@@ -55,6 +55,18 @@
             ],
             type: 'pie'
         },
+        axis: {
+            y:{
+                show: true,
+                label: 'Power in kW'
+            },
+            x:{
+                label: {
+                    text: 'Vpp production / Village usage',
+                    position: 'outer-center',
+                }
+            }
+        },
         grid: {
             x: {
                 show: true
@@ -73,6 +85,7 @@
     }, 3000);
 
     function changeToBarChart() {
+        chart.groups([['Solar Energy', 'Wind Energy', 'Biogas Energy']]);
         chart.transform('bar');
     }
 
@@ -82,18 +95,19 @@
 
     function drawChart() {
         $.get("http://localhost:3000/data/vpp", function(data) {
+            // Used production
             var array1 = ['Solar Energy'];
             var array2 = ['Wind Energy'];
             var array3 = ['Biogas Energy'];
-            array1.push(parseInt(data.solar));
-            array2.push(parseInt(data.wind));
-//            array3.push(parseInt(data.wind));
-//            var obj = JSON.parse(reqData);
-//            for (var i in obj) {
-//                array1.push(parseInt(obj[i].consumption));
-//                array2.push(parseInt(obj[i].production));
-//                var time = obj[i].time.time.hour + ':' + obj[i].time.time.minute;
-//            }
+            array1.push(parseInt(data.vppProduced.solar));
+            array1.push(parseInt(data.vppUsed.solar));
+
+            array2.push(parseInt(data.vppProduced.wind));
+            array2.push(parseInt(data.vppUsed.wind));
+
+            array3.push(parseInt(data.vppProduced.biogas));
+            array3.push(parseInt(data.vppUsed.biogas));
+
             chart.load({
                 columns: [
                     array1,

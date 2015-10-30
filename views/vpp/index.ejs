@@ -23,27 +23,27 @@
             function updatePower() {
                 $.get('http://localhost:3000/data/vpp', function (data) {
                     console.log(data);
-                    var solar = data.solar;
-                    var wind = data.wind;
-                    var biogas = data.biogas;
+                    var solar = data.vppUsed.solar;
+                    var wind = data.vppUsed.wind;
+                    var biogas = data.vppUsed.biogas;
 
                     var sum = 0;
 
-                    if (solar != undefined && solar != null) {
+                    if (solar != undefined && solar != null && solar != 0) {
                         sum = sum + solar;
                         $("#animation1").show();
                     } else {
                         $("#animation1").hide();
                     }
 
-                    if (wind != undefined && wind != null) {
+                    if (wind != undefined && wind != null && wind != 0) {
                         sum = sum + wind;
                         $("#animation2").show();
                     } else {
                         $("#animation2").hide();
                     }
 
-                    if (biogas != undefined && biogas != null) {
+                    if (biogas != undefined && biogas != null && biogas != 0) {
                         sum = sum + biogas;
                         $("#animation3").show();
                     } else {
