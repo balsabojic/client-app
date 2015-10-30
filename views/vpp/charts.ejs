@@ -13,7 +13,7 @@
 <div class="row-fluid">
     <div class="col-sm-12">
         <div class="col-sm-2">
-            <a href="http://localhost:3000/vpp">
+            <a href="<%= address %>/vpp">
                 <button type="button" class="btn btn-primary">
                     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                     Back
@@ -94,7 +94,7 @@
     }
 
     function drawChart() {
-        $.get("http://localhost:3000/data/vpp", function(data) {
+        $.get("<%= address %>/data/vpp", function(data) {
             // Used production
             var array1 = ['Solar Energy'];
             var array2 = ['Wind Energy'];

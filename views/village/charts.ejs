@@ -13,7 +13,7 @@
 <div class="row-fluid">
     <div class="col-sm-12">
         <div class="col-sm-2">
-            <a href="http://localhost:3000/village">
+            <a href="<%= address %>/village">
                 <button type="button" class="btn btn-primary">
                     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                     Back
@@ -114,7 +114,7 @@
     }
 
     function drawChart() {
-        $.get("http://localhost:3000/data", function(reqData) {
+        $.get('<%= address %>/data', function(reqData) {
             var array1 = ['Family Houses (H0)'];
             var array2 = ['Commercial Area'];
             var array3 = ['Agricultural Farm'];

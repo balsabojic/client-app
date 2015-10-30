@@ -35,14 +35,14 @@
         }
       });
 
-      $.get('http://localhost:3000/data', function(data) {
+      $.get('<%= address %>/data', function(data) {
         console.log(data);
       });
 
       function startSimulation(name) {
         var sim = getSessionSimulation();
         if (sim == undefined || sim == null || sim == 'null') {
-          $.post('http://localhost:3000/simulation', {sim_name: name});
+          $.post('<%= address %>/simulation', {sim_name: name});
           var num = 0;
           switch (name) {
             case 'simA':
@@ -92,7 +92,7 @@
 
       function stopSimulation() {
         // Send request to the server
-        $.post('http://localhost:3000/stop');
+        $.post('<%= address %>/stop');
         simulationStopped();
       }
     </script>
@@ -121,7 +121,7 @@
               </div>
               <br />
               <div class="col-sm4 ac">
-                <a onclick="startSimulation('simA')" href="http://localhost:3000/village">
+                <a onclick="startSimulation('simA')" href="<%= address %>/village">
                   <button id="start1" type="button" class="btn btn-primary">
                     <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
                     Start
@@ -144,7 +144,7 @@
               </ul>
               <br />
               <div class="col-sm4 ac">
-                <a onclick="startSimulation('simB')" href="http://localhost:3000/village">
+                <a onclick="startSimulation('simB')" href="<%= address %>/village">
                   <button id="start2" type="button" class="btn btn-primary">
                     <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
                     Start
@@ -167,7 +167,7 @@
               </ul>
               <br />
               <div class="col-sm4 ac">
-                <a onclick="startSimulation('simC')" href="http://localhost:3000/village">
+                <a onclick="startSimulation('simC')" href="<%= address %>/village">
                   <button id="start3" type="button" class="btn btn-primary">
                     <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
                     Start

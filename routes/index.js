@@ -4,7 +4,7 @@ var client = require('./../connector/client');
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Smart Grid'});
+  res.render('index', { title: 'Smart Grid', address : client.getNodeServerAddress()});
 });
 
 router.post('/simulation', function(req, res) {

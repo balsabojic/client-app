@@ -8,7 +8,10 @@ var vppData = null;
 var villageData = null;
 var simulationData = {};
 
-var client = net.connect(4321,/*'127.0.0.1'*/'192.168.21.233',
+var simulationServerAddress = '192.168.21.233';
+var nodeServerAddress = 'http://192.168.21.233:3000';
+
+var client = net.connect(4321, simulationServerAddress,
     function() { //'connect' listener
         connected = true;
         console.log('connected to server!');
@@ -44,7 +47,7 @@ client.on('end', function() {
 client.on('error', console.log);
 
 exports.createClient = function() {
-    client.connect(4321,/*'127.0.0.1'*/'192.168.21.233',
+    client.connect(4321, simulationServerAddress,
         function() { //'connect' listener
             console.log('connected to server!');
         });
@@ -83,4 +86,8 @@ exports.getVillageData = function() {
 
 exports.getSimulationData = function() {
     return simulationData;
+}
+
+exports.getNodeServerAddress = function() {
+    return nodeServerAddress;
 }

@@ -21,7 +21,7 @@
             }, 1000);
 
             function updatePower() {
-                $.get('http://localhost:3000/data/vpp', function (data) {
+                $.get('<%= address %>/data/vpp', function (data) {
                     console.log(data);
                     var solar = data.vppUsed.solar;
                     var wind = data.vppUsed.wind;
@@ -82,7 +82,7 @@
                     <div class="home-div">
                         <img src="/images/solarpanel.png" style="width: 100%;" />
                         <br /> <br /> <br />
-                        <a href="http://localhost:3000/vpp/charts">
+                        <a href="<%= address %>/vpp/charts">
                             <button class="btn btn-primary" type="button">
                                 Solar Energy &nbsp;<span class="badge" id="solar">0%</span>
                             </button>
@@ -101,7 +101,7 @@
                     <div class="home-div">
                         <img src="/images/windturbine.png" style="width: 100%;" />
                         <br /> <br /> <br />
-                        <a href="http://localhost:3000/vpp/charts">
+                        <a href="<%= address %>/vpp/charts">
                             <button class="btn btn-primary" type="button">
                                 Wind Energy &nbsp;<span class="badge" id="wind">0%</span>
                             </button>
@@ -120,7 +120,7 @@
                     <div class="home-div">
                         <img src="/images/biomass.png" style="width: 100%;" />
                         <br /> <br /> <br />
-                        <a href="http://localhost:3000/vpp/charts">
+                        <a href="<%= address %>/vpp/charts">
                             <button class="btn btn-primary" type="button">
                                 Biogas Energy &nbsp;<span class="badge" id="biogas">0%</span>
                             </button>
