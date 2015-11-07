@@ -19,6 +19,15 @@
                     Back
                 </button>
             </a>
+            <div class="col-sm-12 ac" style="border: 4px #0088CC solid; padding:5%; margin-top: 70%;">
+                Hour:<p id="clock-h" style="color:#5cb85c; margin: 0px; font-size: 24px;"><b>Time</b></p>
+            </div>
+            <div class="col-sm-12 ac" style="border: 4px #0088CC solid; padding:5%; margin-top: 5%;">
+                Minute:<p id="clock-m" style="color:#5cb85c; margin: 0px; font-size: 24px;"><b>Time</b></p>
+            </div>
+            <div class="col-sm-12 ac" style="border: 4px #0088CC solid; padding:5%; margin-top: 5%;">
+                Second:<p id="clock-s" style="color:#5cb85c; margin: 0px; font-size: 24px;"><b>Time</b></p>
+            </div>
         </div>
         <div class="col-sm-10 ac">
             <ul class="nav nav-tabs nav-justified">
@@ -64,7 +73,8 @@
                 ['Family Houses (H0)', []],
                 ['Commercial Area', []],
                 ['Agricultural Farm', []],
-                ['Street Light', []]
+                ['Street Light', []],
+                ['SMG', []]
             ],
             type: 'area-step'
         },
@@ -119,12 +129,14 @@
             var array2 = ['Commercial Area'];
             var array3 = ['Agricultural Farm'];
             var array4 = ['Street Light'];
+            var array5 = ['SMG'];
             var obj = JSON.parse(reqData);
             for (var i in obj) {
                 array1.push(parseInt(obj[i].village.village.house));
                 array2.push(parseInt(obj[i].village.village.commercial));
                 array3.push(parseInt(obj[i].village.village.farm));
                 array4.push(parseInt(obj[i].village.village.streetLight));
+                array5.push(parseInt(obj[i].village.village.smgConsumption));
                 var time = obj[i].time.time.hour + ':' + obj[i].time.time.minute;
             }
             chart.load({
@@ -132,8 +144,19 @@
                     array1,
                     array2,
                     array3,
-                    array4
+                    array4,
+                    array5
                 ]
+            });
+
+            $.get('<%= address %>/data/simulation', function(data) {
+                var time = data.currentTime;
+                var currTimeH = data.currentTime.hour;
+                var currTimeM = data.currentTime.minute;
+                var currTimeS = data.currentTime.second;
+                $("#clock-h").html(currTimeH);
+                $("#clock-m").html(currTimeM);
+                $("#clock-s").html(currTimeS);
             });
         });
     }
