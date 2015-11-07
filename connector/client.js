@@ -8,8 +8,12 @@ var vppData = null;
 var villageData = null;
 var simulationData = {};
 
-var simulationServerAddress = '192.168.21.233';
-var nodeServerAddress = 'http://192.168.21.233:3000';
+// Localhost - for internal testing
+var simulationServerAddress = 'localhost';
+var nodeServerAddress = 'http://localhost:3000';
+
+// var simulationServerAddress = '192.168.21.233';
+// var nodeServerAddress = 'http://192.168.21.233:3000';
 
 var client = net.connect(4321, simulationServerAddress,
     function() { //'connect' listener
@@ -31,6 +35,7 @@ client.on('data', function(data) {
     simulationData['end'] = obj.endDate;
     simulationData['interval'] = obj.timeInterval;
     simulationData['progress'] = obj.progress;
+    simulationData['currentTime'] = obj.currentTime.time;
 
     console.log(sendData);
     // Cannot write after end
