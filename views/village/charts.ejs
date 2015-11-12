@@ -74,6 +74,7 @@
                 ['Commercial Area', []],
                 ['Agricultural Farm', []],
                 ['Street Light', []],
+                ['EV Station', []],
                 ['SMG', []]
             ],
             type: 'area-step'
@@ -130,6 +131,7 @@
             var array3 = ['Agricultural Farm'];
             var array4 = ['Street Light'];
             var array5 = ['SMG'];
+            var array6 = ['EV Station'];
             var obj = JSON.parse(reqData);
             for (var i in obj) {
                 array1.push(parseInt(obj[i].village.village.house));
@@ -137,6 +139,7 @@
                 array3.push(parseInt(obj[i].village.village.farm));
                 array4.push(parseInt(obj[i].village.village.streetLight));
                 array5.push(parseInt(obj[i].village.village.smgConsumption));
+                array6.push(parseInt(obj[i].village.village.ev));
                 var time = obj[i].time.time.hour + ':' + obj[i].time.time.minute;
             }
             chart.load({
@@ -145,7 +148,8 @@
                     array2,
                     array3,
                     array4,
-                    array5
+                    array5,
+                    array6
                 ]
             });
 
