@@ -82,3 +82,42 @@ a {
   from {top: 0px;}
   to {top: 40px;}
 }
+
+
+/* Village line charts improved */
+#chart .c3-line-smg {
+  stroke-width: 3px;
+}
+
+#chart .c3-line-Commercial-Area {
+  stroke-width: 3px;
+}
+
+#chart .c3-line-Agricultural-Farm {
+  stroke-width: 3px;
+}
+
+#chart .c3-line-Family-Houses {
+  stroke-width: 3px;
+}
+
+#chart .c3-line-Street-Light {
+  stroke-width: 3px;
+}
+
+/* end */
+
+/* SMG line charts improved */
+#chart .c3-line-smg-production {
+  stroke-width: 3px;
+}
+
+#chart .c3-line-smg-consumption {
+  stroke-width: 3px;
+}
+
+#chart .c3-line-smg-battery {
+  stroke-width: 3px;
+}
+
+/* end */
