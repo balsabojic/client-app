@@ -105,6 +105,10 @@ a {
   stroke-width: 3px;
 }
 
+#chart .c3-line-ev-station {
+  stroke-width: 3px;
+}
+
 /* end */
 
 /* SMG line charts improved */
