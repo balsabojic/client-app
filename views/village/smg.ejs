@@ -19,6 +19,15 @@
                     Back
                 </button>
             </a>
+            <div class="col-sm-12 ac" style="border-radius: 150px; border: 4px #0088CC solid; padding:5%; margin-top: 70%;">
+                Hour:<p id="clock-h" style="color:#5cb85c; margin: 0px; font-size: 24px;"><b>Time</b></p>
+            </div>
+            <div class="col-sm-12 ac" style="border-radius: 150px; border: 4px #0088CC solid; padding:5%; margin-top: 5%;">
+                Minute:<p id="clock-m" style="color:#5cb85c; margin: 0px; font-size: 24px;"><b>Time</b></p>
+            </div>
+            <div class="col-sm-12 ac" style="border-radius: 150px; border: 4px #0088CC solid; padding:5%; margin-top: 5%;">
+                Second:<p id="clock-s" style="color:#5cb85c; margin: 0px; font-size: 24px;"><b>Time</b></p>
+            </div>
         </div>
         <div class="col-sm-10 ac">
             <ul class="nav nav-tabs nav-justified">
@@ -105,6 +114,15 @@
     var change = 0;
 
     function drawChart() {
+    	$.get('<%= address %>/data/simulation', function(data) {
+            var time = data.currentTime;
+            var currTimeH = data.currentTime.hour;
+            var currTimeM = data.currentTime.minute;
+            var currTimeS = data.currentTime.second;
+            $("#clock-h").html(currTimeH);
+            $("#clock-m").html(currTimeM);
+            $("#clock-s").html(currTimeS);
+        });
     	if (option == 1) {
     		$.get("<%= address %>/data/", function(data) {
 	            // Used production
