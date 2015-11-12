@@ -19,13 +19,13 @@
                     Back
                 </button>
             </a>
-            <div class="col-sm-12 ac" style="border: 4px #0088CC solid; padding:5%; margin-top: 70%;">
+            <div class="col-sm-12 ac" style="border-radius: 150px; border: 4px #0088CC solid; padding:5%; margin-top: 70%;">
                 Hour:<p id="clock-h" style="color:#5cb85c; margin: 0px; font-size: 24px;"><b>Time</b></p>
             </div>
-            <div class="col-sm-12 ac" style="border: 4px #0088CC solid; padding:5%; margin-top: 5%;">
+            <div class="col-sm-12 ac" style="border-radius: 150px; border: 4px #0088CC solid; padding:5%; margin-top: 5%;">
                 Minute:<p id="clock-m" style="color:#5cb85c; margin: 0px; font-size: 24px;"><b>Time</b></p>
             </div>
-            <div class="col-sm-12 ac" style="border: 4px #0088CC solid; padding:5%; margin-top: 5%;">
+            <div class="col-sm-12 ac" style="border-radius: 150px; border: 4px #0088CC solid; padding:5%; margin-top: 5%;">
                 Second:<p id="clock-s" style="color:#5cb85c; margin: 0px; font-size: 24px;"><b>Time</b></p>
             </div>
         </div>
@@ -70,7 +70,7 @@
         bindto: '#chart',
         data: {
             columns: [
-                ['Family Houses (H0)', []],
+                ['Family Houses', []],
                 ['Commercial Area', []],
                 ['Agricultural Farm', []],
                 ['Street Light', []],
@@ -125,7 +125,7 @@
 
     function drawChart() {
         $.get('<%= address %>/data', function(reqData) {
-            var array1 = ['Family Houses (H0)'];
+            var array1 = ['Family Houses'];
             var array2 = ['Commercial Area'];
             var array3 = ['Agricultural Farm'];
             var array4 = ['Street Light'];
