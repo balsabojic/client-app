@@ -49,7 +49,9 @@
                 $('#village-commercial').html(data.village.commercial + ' kW');
                 $('#village-farm').html(data.village.farm + ' kW');
                 $('#village-street').html(data.village.streetLight + ' kW');
+                $('#village-ev').html(data.village.ev + ' kW');
                 $('#village-smg').html(data.village.smgConsumption + ' kW');
+                $('#vpp-smg').html(data.village.smgProduction + ' kW');
             });
         }
     });
@@ -105,8 +107,6 @@
                             </div>
                         </li>
                     </ul>
-                </div>
-                <div class="col-sm-6">
                     <div class="panel panel-primary">
                         <div class="panel-heading">Virtual power plant</div>
                         <div class="panel-body">
@@ -123,12 +123,14 @@
                                     Biogas power:
                                     <div id="vpp-biogas" class="label label-success"></div>
                                 </li>
+                                <li class="list-group-item">
+                                    SMG Production:
+                                    <div id="vpp-smg" class="label label-success"></div>
+                                </li>
                             </ul>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-12">
                 <div class="col-sm-6">
                     <div class="panel panel-primary">
                         <div class="panel-heading">Inspect charts</div>
@@ -139,10 +141,8 @@
                                     View charts
                                 </button>
                             </a>
-                        </div>
+                        </div>    
                     </div>
-                </div>
-                <div class="col-sm-6">
                     <div class="panel panel-primary">
                         <div class="panel-heading">Village</div>
                         <div class="panel-body">
@@ -164,7 +164,11 @@
                                     <div id="village-street" class="label label-success"></div>
                                 </li>
                                 <li class="list-group-item">
-                                    SMG Nodes:
+                                    EV Station:
+                                    <div id="village-ev" class="label label-success"></div>
+                                </li>
+                                <li class="list-group-item">
+                                    SMG Usage:
                                     <div id="village-smg" class="label label-success"></div>
                                 </li>
                             </ul>
