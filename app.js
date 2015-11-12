@@ -9,6 +9,7 @@ var routes = require('./routes/index');
 var data = require('./routes/data');
 var village = require('./routes/village');
 var vpp = require('./routes/vpp');
+var smg = require('./routes/smg');
 
 var app = express();
 
@@ -18,6 +19,7 @@ var client = require('./connector/client');
 app.set('views', path.join(__dirname, 'views'));
 app.set('village', path.join(__dirname, 'views/village'));
 app.set('vpp', path.join(__dirname, 'views/vpp'));
+app.set('smg', path.join(__dirname, 'views/smg'));
 app.set('view engine', 'ejs');
 
 app.use(favicon());
@@ -31,6 +33,7 @@ app.use('/', routes);
 app.use('/data', data);
 app.use('/village', village);
 app.use('/vpp', vpp);
+app.use('/smg', smg);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
