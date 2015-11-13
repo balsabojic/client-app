@@ -106,18 +106,21 @@
           <div class="col-sm-4">
             <div class="home-div">
               <div class="home-picture"></div>
-              <h3>Simulation A:</h3>
-              <b>Virtual Power Plant: </b> <br/>
+              <br />
+              <b>VPP (initial power): </b> <br/>
               <div style="padding-left: 5%;">
-                Solar Energy: <b>10 KW </b> <br />
-                Wind Energy: <b>1 MW </b> <br />
-                Biogas Energy: <b>0 W </b> <br />
+                Solar Energy: <b>250 KW </b> <br />
+                Wind Energy: <b>200 KW </b> <br />
+                Biogas Energy: <b>150 KW </b> <br />
               </div>
-              <b>Village: </b> <br />
+              <br />
+              <b>Village (yearly usage): </b> <br />
               <div style="padding-left: 5%;">
-                Family houses: <b>10 KW </b> <br />
-                Street Lights: <b>200 KW </b> <br />
-                Commercial: <b>100 KW </b>
+                Family houses: <b>50 x 6 MW </b> <br />
+                Street Lights: <b>100 MW </b> <br />
+                Commercial: <b>15 x 50 MW </b> <br />
+                Farm: <b>10 x 30 MW </b> <br />
+                EV station: <b>1 x 2 MW </b>
               </div>
               <br />
               <div class="col-sm4 ac">
@@ -137,11 +140,22 @@
           <div class="col-sm-4">
             <div class="home-div">
               <div class="home-picture"></div>
-              <h3>Simulation B:</h3>
-              <ul>
-                <li>VPP: 50%</li>
-                <li>Profile: A</li>
-              </ul>
+              <br /> 
+              <b>VPP (initial power): </b> <br/>
+              <div style="padding-left: 5%;">
+                Solar Energy: <b>250 KW </b> <br />
+                Wind Energy: <b>150 KW </b> <br />
+                Biogas Energy: <b>100 KW </b> <br />
+              </div>
+              <br >
+              <b>Village (yearly usage): </b> <br />
+              <div style="padding-left: 5%;">
+                Family houses: <b>30 x 6 MW </b> <br />
+                Street Lights: <b>100 MW </b> <br />
+                Commercial: <b>20 x 50 MW </b> <br />
+                Farm: <b>5 x 30 MW </b> <br />
+                EV station: <b>1 x 2M </b>
+              </div>
               <br />
               <div class="col-sm4 ac">
                 <a onclick="startSimulation('simB')" href="<%= address %>/village">
@@ -160,11 +174,22 @@
           <div class="col-sm-4">
             <div class="home-div">
               <div class="home-picture"></div>
-              <h3>Simulation C:</h3>
-              <ul>
-                <li>VPP: default</li>
-                <li>Profile: default</li>
-              </ul>
+              <br />
+              <b>VPP (initial power): </b> <br/>
+              <div style="padding-left: 5%;">
+                Solar Energy: <b>300 KW </b> <br />
+                Wind Energy: <b>250 KW </b> <br />
+                Biogas Energy: <b>150 KW </b> <br />
+              </div>
+              <br />
+              <b>Village (yearly usage): </b> <br />
+              <div style="padding-left: 5%;">
+                Family houses: <b>50 x 6 MW </b> <br />
+                Street Lights: <b>100 MW </b> <br />
+                Commercial: <b>15 x 50 MW </b> <br />
+                Farm: <b>5 x 30 MW </b> <br />
+                EV station: <b>1 x 2 MW </b>
+              </div>
               <br />
               <div class="col-sm4 ac">
                 <a onclick="startSimulation('simC')" href="<%= address %>/village">
