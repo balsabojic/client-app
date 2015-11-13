@@ -25,4 +25,10 @@ router.get('/simulation', function(req, res) {
     res.json(data);
 });
 
+router.get('/partial', function(req, res) {
+    // Add simulation data
+    var data = client.getPartialData();
+    res.json(data);
+});
+
 module.exports = router;
