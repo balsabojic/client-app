@@ -2,18 +2,22 @@
 var net = require('net');
 
 var sendData = [];
+var partialData = [];
+var partialDataCounter = 0;
 var connected = false;
 
 var vppData = null;
 var villageData = null;
 var simulationData = {};
 
-// Localhost - for internal testing
-var simulationServerAddress = 'localhost';
-var nodeServerAddress = 'http://localhost:3000';
+var simName = '';
 
-// var simulationServerAddress = '192.168.21.233';
-// var nodeServerAddress = 'http://192.168.21.233:3000';
+// Localhost - for internal testing
+// var simulationServerAddress = 'localhost';
+// var nodeServerAddress = 'http://localhost:3000';
+
+var simulationServerAddress = '192.168.21.233';
+var nodeServerAddress = 'http://192.168.21.233:3000';
 
 var client = net.connect(4321, simulationServerAddress,
     function() { //'connect' listener
@@ -24,6 +28,18 @@ var client = net.connect(4321, simulationServerAddress,
 client.on('data', function(data) {
     var obj = JSON.parse(data);
     sendData.push(obj);
+
+    // Add partial data with max 10 rows
+    if (partialDataCounter < 10) {
+        partialData[partialDataCounter] = obj;
+    }
+    else {
+        for (var i = 0; i < 9; i++) {
+            partialData[i] = partialData[i+1]
+        }
+        partialData[9] = obj;
+    }
+    partialDataCounter = partialDataCounter + 1;
 
     // Vpp and Village data
     vppData = obj.vpp;
@@ -85,6 +101,10 @@ exports.getVppData = function() {
     return vppData;
 }
 
+exports.getPartialData = function() {
+    return JSON.stringify(partialData);
+}
+
 exports.getVillageData = function() {
     return villageData;
 }
@@ -95,4 +115,12 @@ exports.getSimulationData = function() {
 
 exports.getNodeServerAddress = function() {
     return nodeServerAddress;
+}
+
+exports.setSimName = function(name) {
+    simName = name;
+}
+
+exports.getSimName = function() {
+    return simName;
 }
