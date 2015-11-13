@@ -9,6 +9,7 @@ router.get('/', function(req, res) {
 
 router.post('/simulation', function(req, res) {
   var name = req.body.sim_name;
+  client.setSimName(name);
   console.log("Request sent: " + name);
   if (!client.isConnected())  {
     console.log('Client is null');
