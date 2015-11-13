@@ -96,7 +96,14 @@
     }
 
     function drawChart() {
-        $.get('<%= address %>/data', function(reqData) {
+    	var partialData = '';
+        var sim = '<%= simName %>';
+        if (sim != null & sim != undefined) {
+            if (sim == 'simC') {
+                partialData = "/partial";
+            }
+        }
+        $.get('<%= address %>/data' + partialData, function(reqData) {
             var array1 = ['SMG Production'];
             var array2 = ['SMG Consumption'];
             var array3 = ['SMG Battery'];

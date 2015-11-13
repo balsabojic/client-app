@@ -125,7 +125,14 @@
     }
 
     function drawChart() {
-        $.get('<%= address %>/data', function(reqData) {
+        var partialData = '';
+        var sim = '<%= simName %>';
+        if (sim != null & sim != undefined) {
+            if (sim == 'simC') {
+                partialData = "/partial";
+            }
+        }
+        $.get('<%= address %>/data' + partialData, function(reqData) {
             var array1 = ['Family Houses'];
             var array2 = ['Commercial Area'];
             var array3 = ['Agricultural Farm'];
